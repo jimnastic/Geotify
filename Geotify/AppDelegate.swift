@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UIApplication.shared.cancelAllLocalNotifications()
     return true
   }
-  
+  //add a comment
   
   func handleEvent(forRegion region: CLRegion!) {
     // Show an alert if application is active
