@@ -28,12 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   let locationManager = CLLocationManager() // Add this statement
+  let testDrive = Drive()
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
     locationManager.delegate = self
     locationManager.requestAlwaysAuthorization()
     application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
     UIApplication.shared.cancelAllLocalNotifications()
+
+    if(testDrive.startMonitoring(direction: .toWork)==true){print("monitoring")}else{print("failedMonitoring")}
+    if(testDrive.startDrive(time: Date() as NSDate)==true){print("driving")}else{print("failedDriving")}
+    if(testDrive.arrived(time: Date() as NSDate)==true){print("arrived")}else{print("failedArrive")}
     return true
   }
 
