@@ -34,6 +34,7 @@ class GeotificationsViewController: UIViewController {
   
   var geotifications: [Geotification] = []
   let locationManager = CLLocationManager() // Add this statement
+  let testDrive = Drive()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,6 +44,10 @@ class GeotificationsViewController: UIViewController {
     locationManager.requestAlwaysAuthorization()
     // 3
     loadAllGeotifications()
+    if(testDrive.startMonitoring(direction: .toWork)==true){print("monitoring")}else{print("failedMonitoring")}
+    if(testDrive.startDrive(time: Date() as NSDate)==true){print("driving")}else{print("failedDriving")}
+    if(testDrive.arrived(time: Date() as NSDate)==true){print("arrived")}else{print("failedArrive")}
+
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
